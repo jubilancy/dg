@@ -1,7 +1,7 @@
 ---
 title: "Tags"
-permalink: /tags
-layout: default
+permalink: /tags/
+layout: Post
 content-type: static
 ---
 {%- assign all_tags = "" | split: "" -%}
@@ -19,10 +19,10 @@ content-type: static
     {%- endunless -%}
   {%- endfor -%}
 {%- endfor -%}
+{%- assign sorted_tags = all_tags | sort -%}
 
-<div class="tags-list">
-  {%- assign sorted_tags = all_tags | sort -%}
+<div class="tags-index">
   {%- for tag in sorted_tags -%}
-  <a href="{{ site.baseurl }}/tags/{{ tag }}" class="tag">{{ tag }}</a>
+  <a href="{{ site.baseurl }}/tags/{{ tag }}/" class="tag">{{ tag }}</a>
   {%- endfor -%}
 </div>
