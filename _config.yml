@@ -72,6 +72,15 @@ defaults:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-archives
+
+# Jekyll Archives (auto-generates tag pages)
+jekyll-archives:
+  enabled:
+    - tags
+  layout: Tag
+  permalinks:
+    tag: '/tags/:name/'
 
 # Private links (for broken wiki links)
 privatelinks:
