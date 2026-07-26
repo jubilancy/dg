@@ -80,13 +80,17 @@ plugins:
   - jekyll-sitemap
   - jekyll-archives
 
-# Jekyll Archives (auto-generates tag pages)
+# Jekyll Archives (auto-generates tag and category pages)
 jekyll-archives:
   enabled:
     - tags
-  layout: Tag
+    - categories
+  layouts:
+    tag: Tag
+    category: Category
   permalinks:
     tag: '/tags/:name/'
+    category: '/categories/:name/'
 
 # Private links (for broken wiki links)
 privatelinks:
