@@ -1,5 +1,5 @@
 # Jekyll Garden Configuration
-# Optimized for jubilancy.github.io/jekyll-garden
+# Optimized for jubilancy.github.io/dg
 
 # Preferences (controls template behavior)
 preferences:
@@ -19,7 +19,7 @@ title: "Eliana's Garden"
 heading: "eliana"
 description: "A digital garden"
 url: "https://jubilancy.github.io"
-baseurl: /jekyll-garden
+baseurl: /dg
 
 # Asset Configuration
 apple_touch_icon: "/assets/img/profile.png"
