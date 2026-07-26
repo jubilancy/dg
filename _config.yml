@@ -16,7 +16,7 @@ preferences:
 
 # Site Configuration
 title: "Eliana's Garden"
-heading: "eliana"
+heading: "dg"
 description: "A digital garden"
 url: "https://jubilancy.github.io"
 baseurl: /dg
