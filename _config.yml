@@ -67,6 +67,11 @@ defaults:
       content-type: "post"
       feed: "show"
       permalink: /blog/:title/
+  - scope:
+      path: "lists"
+    values:
+      layout: "Post"
+      content-type: "static"
 
 # Plugins
 plugins:
