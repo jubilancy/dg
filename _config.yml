@@ -20,6 +20,7 @@ heading: "dg"
 description: "A digital garden"
 url: "https://jubilancy.github.io"
 baseurl: /dg
+favicon: /assets/img/favicon.svg
 
 # Asset Configuration
 apple_touch_icon: "/assets/img/profile.png"
