@@ -1,0 +1,44 @@
+name: Add front matter to lists
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lists/**.md'
+
+permissions:
+  contents: write
+
+jobs:
+  add-front-matter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add missing front matter
+        run: |
+          for file in lists/*.md; do
+            if [ -f "$file" ]; then
+              first_line=$(head -n 1 "$file")
+              if [ "$first_line" != "---" ]; then
+                echo "Adding front matter to $file"
+                temp_file=$(mktemp)
+                echo "---" > "$temp_file"
+                echo "---" >> "$temp_file"
+                cat "$file" >> "$temp_file"
+                mv "$temp_file" "$file"
+              fi
+            fi
+          done
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add lists/*.md
+          git diff --staged --quiet || git commit -m "Auto-add front matter to lists files"
+          git push
