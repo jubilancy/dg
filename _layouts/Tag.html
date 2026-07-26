@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<h1>Tag: {{ page.tag }}</h1>
+<div class="related-wrapper">
+  {%- assign tagged_posts = site.posts | where_exp: "post", "post.tags contains page.tag" -%}
+  {%- assign tagged_notes = site.notes | where_exp: "note", "note.tags contains page.tag" -%}
+  
+  {%- for post in tagged_posts -%}
+  <div class="notelist-feed">
+    <a href="{{ site.baseurl }}{{ post.url }}">
+      <p>{{ post.title }}</p>
+    </a>
+  </div>
+  {%- endfor -%}
+  
+  {%- for note in tagged_notes -%}
+  <div class="notelist-feed">
+    <a href="{{ site.baseurl }}{{ note.url }}">
+      <p>{{ note.title }}</p>
+    </a>
+  </div>
+  {%- endfor -%}
+</div>
