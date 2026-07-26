@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {%- assign display_title = page.title | default: page.name | replace: '.md', '' | replace: '-', ' ' | replace: '_', ' ' | capitalize -%}
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="{{ site.title | default: site.heading }}" property="og:site_name" />
     <meta content="{{ site.description | default: 'A Jekyll Garden site' }}" property="og:description">
@@ -12,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    {%- if page.title -%}
-    <meta content="{{ page.title }}" property="og:title">
+    {%- if display_title -%}
+    <meta content="{{ display_title }}" property="og:title">
     <meta content="article" property="og:type">
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     {%- else -%}
@@ -21,7 +22,7 @@
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     {%- endif -%}
 
-    <title>{%- if page.title -%}{{ page.title | downcase }} ~ {%- endif -%}{{ site.heading }}</title>
+    <title>{%- if display_title -%}{{ display_title | downcase }} ~ {%- endif -%}{{ site.heading }}</title>
     <link rel="canonical" href="{{site.url}}{{page.url}}" />
     {%- if site.apple_touch_icon -%}
     <link rel="apple-touch-icon" href="{{ site.baseurl }}{{ site.apple_touch_icon }}">
@@ -61,7 +62,7 @@
                     {%- include Content.html -%}
                 {%- else -%}
                     <!--- Show content from notes.md + search + feed when homepage is disabled -->
-                    <h1>{{page.title}}</h1>
+                    <h1>{{display_title}}</h1>
                     {%- include Content.html -%}
                     {%- include Search.html -%}
                     {%- include Feed.html -%}
@@ -70,7 +71,7 @@
 
             <!--- Notes Feed Layout-->
             {%- if page.permalink == "/notes" -%}
-                <h1>{{page.title}}</h1>
+                <h1>{{display_title}}</h1>
                 {%- include Content.html -%}
                 {%- include Search.html -%}
                 {%- include Feed.html -%}
@@ -78,7 +79,7 @@
 
             <!--- Notes Layout-->
             {%- if page.content-type == "notes" -%}
-                <h1>{{page.title}}</h1>
+                <h1>{{display_title}}</h1>
                 {%- if page.tags.size > 0 -%}
                 <div class="tags">
                   {%- for tag in page.tags -%}
@@ -94,7 +95,7 @@
 
              <!--- Post Layout-->
              {%- if page.content-type == "post"  -%}
-                 <h1>{{page.title}}</h1>
+                 <h1>{{display_title}}</h1>
                  {%- if page.tags.size > 0 -%}
                  <div class="tags">
                    {%- for tag in page.tags -%}
@@ -110,7 +111,7 @@
 
             <!--- Static Page Layout-->
             {%- if page.content-type == "static" -%}
-                <h1>{{page.title}}</h1>                        
+                <h1>{{display_title}}</h1>                        
                 {%- include Content.html -%}
             {%- endif -%}
             
