@@ -79,6 +79,13 @@
             <!--- Notes Layout-->
             {%- if page.content-type == "notes" -%}
                 <h1>{{page.title}}</h1>
+                {%- if page.tags.size > 0 -%}
+                <div class="tags">
+                  {%- for tag in page.tags -%}
+                  <a href="{{ site.baseurl }}/tags/{{ tag }}/" class="tag">{{ tag }}</a>
+                  {%- endfor -%}
+                </div>
+                {%- endif -%}
                 {%- include Content.html -%}
                 {%- if site.preferences.backlinks.enabled -%}
                 {%- include Backlinks.html -%}
@@ -88,6 +95,13 @@
              <!--- Post Layout-->
              {%- if page.content-type == "post"  -%}
                  <h1>{{page.title}}</h1>
+                 {%- if page.tags.size > 0 -%}
+                 <div class="tags">
+                   {%- for tag in page.tags -%}
+                   <a href="{{ site.baseurl }}/tags/{{ tag }}/" class="tag">{{ tag }}</a>
+                   {%- endfor -%}
+                 </div>
+                 {%- endif -%}
                  {%- include Content.html -%}
                  {%- if site.preferences.backlinks.enabled -%}
                  {%- include Backlinks.html -%}
@@ -120,4 +134,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>
